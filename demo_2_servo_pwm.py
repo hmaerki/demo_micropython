@@ -5,7 +5,7 @@ min_duty = 1802
 max_duty = 7864
 
 pwm_frequency = 50
-servo = machine.PWM(machine.Pin(1))
+servo = machine.PWM(machine.Pin("GPIO1"))
 servo.freq(pwm_frequency)
 
 def set_servo(angle: float):
@@ -13,6 +13,6 @@ def set_servo(angle: float):
     servo.duty_u16(int(duty))
 
 while True:
-    for angle in (45.0, 60.0, 90.0, 120.0, 90.0, 60.0):
+    for angle in (30.0, 60.0, 90.0, 120.0, 90.0, 60.0):
         set_servo(angle)
         time.sleep(1) 

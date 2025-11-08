@@ -3,7 +3,7 @@ import machine
 import onewire
 import ds18x20
 
-ow = onewire.OneWire(machine.Pin(27))
+ow = onewire.OneWire(machine.Pin("GPIO27"))
 ds = ds18x20.DS18X20(ow)
 serials = ds.scan()
 while True:

@@ -12,7 +12,7 @@ class Button:
     def __init__(self, gpio: int, color: str):
         self.ticks_pressed_us = 0
 
-        def handler(pin):
+        def handler(pin: machine.Pin):
             if DEBOUNCE:
                 if time.ticks_diff(time.ticks_us(), self.ticks_pressed_us) > BOUNCE_TIME_US:
                     self.ticks_pressed_us = time.ticks_us()
@@ -24,8 +24,8 @@ class Button:
         pin = machine.Pin(gpio, machine.Pin.IN, machine.Pin.PULL_UP)
         pin.irq(handler, hard=True)  
 
-button_red = Button(17, "red")
-button_white = Button(18, "white")
+button_red = Button("GPIO17", "red")
+button_white = Button("GPIO18", "white")
 
 while True:
     print("...")
